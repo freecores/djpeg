@@ -33,7 +33,6 @@ module jpeg_test;
    wire [31:0] JPEG_DATA;
    reg         DATA_ENABLE;
    wire        READ_ENABLE;
-   reg         JPEG_START;
    wire        JPEG_IDLE;
 
    wire        OutEnable;
@@ -64,7 +63,6 @@ module jpeg_test;
       .DataIn          (JPEG_DATA),
       .DataInEnable    (DATA_ENABLE),
       .DataInRead      (READ_ENABLE),
-      .JpegDecodeStart (JPEG_START),
       .JpegDecodeIdle  (JPEG_IDLE),
 
       .OutEnable ( OutEnable ),
@@ -115,15 +113,6 @@ module jpeg_test;
 
    assign JPEG_DATA = JPEG_MEM[DATA_COUNT];
    
-   initial begin
-      JPEG_START <= 1'b0;
-      wait (rst == 1'b1);
-      @(posedge clk);
-      JPEG_START <= 1'b1;
-      @(posedge clk);
-      JPEG_START <= 1'b0;
-   end
-
    integer i;
 
 /*      
@@ -331,16 +320,16 @@ module jpeg_test;
       
       while(1) begin
          if(u_jpeg_decode.OutEnable == 1'b1) begin
-	    address = u_jpeg_decode.OutWidth * u_jpeg_decode.OutPixelY +
+            address = u_jpeg_decode.OutWidth * u_jpeg_decode.OutPixelY +
                       u_jpeg_decode.OutPixelX;
-
+            /*
             $display(" RGB[%4d,%4d,%4d,%4d](%d): %3x,%3x,%3x = %2x,%2x,%2x",OutPixelX,OutPixelY,u_jpeg_decode.OutWidth,u_jpeg_decode.OutHeight,
-		    address,
-		    u_jpeg_decode.u_jpeg_ycbcr.u_jpeg_ycbcr2rgb.Phase3Y,
-		    u_jpeg_decode.u_jpeg_ycbcr.u_jpeg_ycbcr2rgb.Phase3Cb,
-		    u_jpeg_decode.u_jpeg_ycbcr.u_jpeg_ycbcr2rgb.Phase3Cr,
+                    address,
+                    u_jpeg_decode.u_jpeg_ycbcr.u_jpeg_ycbcr2rgb.Phase3Y,
+                    u_jpeg_decode.u_jpeg_ycbcr.u_jpeg_ycbcr2rgb.Phase3Cb,
+                    u_jpeg_decode.u_jpeg_ycbcr.u_jpeg_ycbcr2rgb.Phase3Cr,
                     OutR,OutG,OutB);
-
+             */
             rgb_mem[address] = {OutR,OutG,OutB};
          end
          @(posedge clk);
@@ -349,8 +338,9 @@ module jpeg_test;
     
 
    initial begin
-      while(!(u_jpeg_decode.OutPixelX == u_jpeg_decode.OutWidth -1 & u_jpeg_decode.OutPixelY == u_jpeg_decode.OutHeight -1 & count > 1000)) @(posedge clk);
-      @(posedge clk);
+      wait(!JPEG_IDLE);
+      wait(JPEG_IDLE);
+      
       $display(" End Clock %d",count);
       fp = $fopen("sim.dat");
       $fwrite(fp,"%0d\n",OutWidth);

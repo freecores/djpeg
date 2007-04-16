@@ -168,7 +168,8 @@ module jpeg_ziguzagu_reg
    reg [15:0] 	 RegData [0:63]; // Register Memory
 
    integer 	 i;
-   
+
+/*   
    always @(posedge clk or negedge rst) begin
       if(!rst) begin
          RegData[0] <= 16'h0000;
@@ -246,6 +247,209 @@ module jpeg_ziguzagu_reg
          end
       end // else: !if(!rst)
    end // always @ (posedge clk or negedge rst)
+*/
+	always @(posedge clk or negedge rst) begin
+		if(!rst) begin
+			RegData[0] <= 16'h0000;
+			RegData[1] <= 16'h0000;
+         RegData[2] <= 16'h0000;
+         RegData[3] <= 16'h0000;
+         RegData[4] <= 16'h0000;
+         RegData[5] <= 16'h0000;
+         RegData[6] <= 16'h0000;
+         RegData[7] <= 16'h0000;
+         RegData[8] <= 16'h0000;
+         RegData[9] <= 16'h0000;
+         RegData[10] <= 16'h0000;
+         RegData[11] <= 16'h0000;
+         RegData[12] <= 16'h0000;
+         RegData[13] <= 16'h0000;
+         RegData[14] <= 16'h0000;
+         RegData[15] <= 16'h0000;
+         RegData[16] <= 16'h0000;
+         RegData[17] <= 16'h0000;
+         RegData[18] <= 16'h0000;
+         RegData[19] <= 16'h0000;
+         RegData[20] <= 16'h0000;
+         RegData[21] <= 16'h0000;
+         RegData[22] <= 16'h0000;
+         RegData[23] <= 16'h0000;
+         RegData[24] <= 16'h0000;
+         RegData[25] <= 16'h0000;
+         RegData[26] <= 16'h0000;
+         RegData[27] <= 16'h0000;
+         RegData[28] <= 16'h0000;
+         RegData[29] <= 16'h0000;
+         RegData[30] <= 16'h0000;
+         RegData[31] <= 16'h0000;
+         RegData[32] <= 16'h0000;
+         RegData[33] <= 16'h0000;
+         RegData[34] <= 16'h0000;
+         RegData[35] <= 16'h0000;
+         RegData[36] <= 16'h0000;
+         RegData[37] <= 16'h0000;
+         RegData[38] <= 16'h0000;
+         RegData[39] <= 16'h0000;
+         RegData[40] <= 16'h0000;
+         RegData[41] <= 16'h0000;
+         RegData[42] <= 16'h0000;
+         RegData[43] <= 16'h0000;
+         RegData[44] <= 16'h0000;
+         RegData[45] <= 16'h0000;
+         RegData[46] <= 16'h0000;
+         RegData[47] <= 16'h0000;
+         RegData[48] <= 16'h0000;
+         RegData[49] <= 16'h0000;
+         RegData[50] <= 16'h0000;
+         RegData[51] <= 16'h0000;
+         RegData[52] <= 16'h0000;
+         RegData[53] <= 16'h0000;
+         RegData[54] <= 16'h0000;
+         RegData[55] <= 16'h0000;
+         RegData[56] <= 16'h0000;
+         RegData[57] <= 16'h0000;
+         RegData[58] <= 16'h0000;
+         RegData[59] <= 16'h0000;
+         RegData[60] <= 16'h0000;
+         RegData[61] <= 16'h0000;
+         RegData[62] <= 16'h0000;
+         RegData[63] <= 16'h0000;
+		end else begin
+			if(DataInEnable == 1'b1) begin
+				case(DataInAddress)
+				6'd0: begin
+			RegData[0] <= DataIn;
+			RegData[1] <= 16'h0000;
+         RegData[2] <= 16'h0000;
+         RegData[3] <= 16'h0000;
+         RegData[4] <= 16'h0000;
+         RegData[5] <= 16'h0000;
+         RegData[6] <= 16'h0000;
+         RegData[7] <= 16'h0000;
+         RegData[8] <= 16'h0000;
+         RegData[9] <= 16'h0000;
+         RegData[10] <= 16'h0000;
+         RegData[11] <= 16'h0000;
+         RegData[12] <= 16'h0000;
+         RegData[13] <= 16'h0000;
+         RegData[14] <= 16'h0000;
+         RegData[15] <= 16'h0000;
+         RegData[16] <= 16'h0000;
+         RegData[17] <= 16'h0000;
+         RegData[18] <= 16'h0000;
+         RegData[19] <= 16'h0000;
+         RegData[20] <= 16'h0000;
+         RegData[21] <= 16'h0000;
+         RegData[22] <= 16'h0000;
+         RegData[23] <= 16'h0000;
+         RegData[24] <= 16'h0000;
+         RegData[25] <= 16'h0000;
+         RegData[26] <= 16'h0000;
+         RegData[27] <= 16'h0000;
+         RegData[28] <= 16'h0000;
+         RegData[29] <= 16'h0000;
+         RegData[30] <= 16'h0000;
+         RegData[31] <= 16'h0000;
+         RegData[32] <= 16'h0000;
+         RegData[33] <= 16'h0000;
+         RegData[34] <= 16'h0000;
+         RegData[35] <= 16'h0000;
+         RegData[36] <= 16'h0000;
+         RegData[37] <= 16'h0000;
+         RegData[38] <= 16'h0000;
+         RegData[39] <= 16'h0000;
+         RegData[40] <= 16'h0000;
+         RegData[41] <= 16'h0000;
+         RegData[42] <= 16'h0000;
+         RegData[43] <= 16'h0000;
+         RegData[44] <= 16'h0000;
+         RegData[45] <= 16'h0000;
+         RegData[46] <= 16'h0000;
+         RegData[47] <= 16'h0000;
+         RegData[48] <= 16'h0000;
+         RegData[49] <= 16'h0000;
+         RegData[50] <= 16'h0000;
+         RegData[51] <= 16'h0000;
+         RegData[52] <= 16'h0000;
+         RegData[53] <= 16'h0000;
+         RegData[54] <= 16'h0000;
+         RegData[55] <= 16'h0000;
+         RegData[56] <= 16'h0000;
+         RegData[57] <= 16'h0000;
+         RegData[58] <= 16'h0000;
+         RegData[59] <= 16'h0000;
+         RegData[60] <= 16'h0000;
+         RegData[61] <= 16'h0000;
+         RegData[62] <= 16'h0000;
+         RegData[63] <= 16'h0000;
+				end
+				6'd1:	RegData[1]	<= DataIn;
+				6'd2:	RegData[2]	<= DataIn;
+				6'd3:	RegData[3]	<= DataIn;
+				6'd4:	RegData[4]	<= DataIn;
+				6'd5:	RegData[5]	<= DataIn;
+				6'd6:	RegData[6]	<= DataIn;
+				6'd7:	RegData[7]	<= DataIn;
+				6'd8:	RegData[8]	<= DataIn;
+				6'd9:	RegData[9]	<= DataIn;
+				6'd10:	RegData[10]	<= DataIn;
+				6'd11:	RegData[11]	<= DataIn;
+				6'd12:	RegData[12]	<= DataIn;
+				6'd13:	RegData[13]	<= DataIn;
+				6'd14:	RegData[14]	<= DataIn;
+				6'd15:	RegData[15]	<= DataIn;
+				6'd16:	RegData[16]	<= DataIn;
+				6'd17:	RegData[17]	<= DataIn;
+				6'd18:	RegData[18]	<= DataIn;
+				6'd19:	RegData[19]	<= DataIn;
+				6'd20:	RegData[20]	<= DataIn;
+				6'd21:	RegData[21]	<= DataIn;
+				6'd22:	RegData[22]	<= DataIn;
+				6'd23:	RegData[23]	<= DataIn;
+				6'd24:	RegData[24]	<= DataIn;
+				6'd25:	RegData[25]	<= DataIn;
+				6'd26:	RegData[26]	<= DataIn;
+				6'd27:	RegData[27]	<= DataIn;
+				6'd28:	RegData[28]	<= DataIn;
+				6'd29:	RegData[29]	<= DataIn;
+				6'd30:	RegData[30]	<= DataIn;
+				6'd31:	RegData[31]	<= DataIn;
+				6'd32:	RegData[32]	<= DataIn;
+				6'd33:	RegData[33]	<= DataIn;
+				6'd34:	RegData[34]	<= DataIn;
+				6'd35:	RegData[35]	<= DataIn;
+				6'd36:	RegData[36]	<= DataIn;
+				6'd37:	RegData[37]	<= DataIn;
+				6'd38:	RegData[38]	<= DataIn;
+				6'd39:	RegData[39]	<= DataIn;
+				6'd40:	RegData[40]	<= DataIn;
+				6'd41:	RegData[41]	<= DataIn;
+				6'd42:	RegData[42]	<= DataIn;
+				6'd43:	RegData[43]	<= DataIn;
+				6'd44:	RegData[44]	<= DataIn;
+				6'd45:	RegData[45]	<= DataIn;
+				6'd46:	RegData[46]	<= DataIn;
+				6'd47:	RegData[47]	<= DataIn;
+				6'd48:	RegData[48]	<= DataIn;
+				6'd49:	RegData[49]	<= DataIn;
+				6'd50:	RegData[50]	<= DataIn;
+				6'd51:	RegData[51]	<= DataIn;
+				6'd52:	RegData[52]	<= DataIn;
+				6'd53:	RegData[53]	<= DataIn;
+				6'd54:	RegData[54]	<= DataIn;
+				6'd55:	RegData[55]	<= DataIn;
+				6'd56:	RegData[56]	<= DataIn;
+				6'd57:	RegData[57]	<= DataIn;
+				6'd58:	RegData[58]	<= DataIn;
+				6'd59:	RegData[59]	<= DataIn;
+				6'd60:	RegData[60]	<= DataIn;
+				6'd61:	RegData[61]	<= DataIn;
+				6'd62:	RegData[62]	<= DataIn;
+				6'd63:	RegData[63]	<= DataIn;
+				endcase
+			end
+		end // else: !if(!rst)
+	end // always @ (posedge clk or negedge rst)
   
    assign Data00Reg = RegData[00];
    assign Data01Reg = RegData[01];

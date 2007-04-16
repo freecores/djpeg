@@ -50,56 +50,56 @@ module jpeg_ycbcr_mem
    output [8:0]   DataOutCb;
    output [8:0]   DataOutCr;
 
-   reg [8:0]      MemYA  [0:255];
-   reg [8:0]      MemYB  [0:255];
-   reg [8:0]      MemCbA [0:63];
-   reg [8:0]      MemCbB [0:63];
-   reg [8:0]      MemCrA [0:63];
-   reg [8:0]      MemCrB [0:63];
+   reg [8:0]      MemYA  [0:127];
+   reg [8:0]      MemYB  [0:127];
+   reg [8:0]      MemCbA [0:31];
+   reg [8:0]      MemCbB [0:31];
+   reg [8:0]      MemCrA [0:31];
+   reg [8:0]      MemCrB [0:31];
 
-   reg [7:0]      WriteAddressA;
-   reg [7:0]      WriteAddressB;
+   reg [6:0]      WriteAddressA;
+   reg [6:0]      WriteAddressB;
 
    always @(DataInColor or DataInPage or DataInCount) begin
-      WriteAddressA[7] <= DataInColor[1];
-      WriteAddressB[7] <= DataInColor[1];
+      WriteAddressA[6] <= DataInColor[1];
+      WriteAddressB[6] <= DataInColor[1];
       if(DataInColor[2] == 1'b0) begin
          if(DataInColor[0] == 1'b0) begin
             case(DataInCount)
               2'h0: begin
-                 WriteAddressA[6:0] <= DataInPage +  0;
-                 WriteAddressB[6:0] <= DataInPage +112;
+                 WriteAddressA[5:0] <= DataInPage +  0;
+                 WriteAddressB[5:0] <= DataInPage +112 -64;
               end
               2'h1: begin
-                 WriteAddressA[6:0] <= DataInPage + 16;
-                 WriteAddressB[6:0] <= DataInPage + 96;
+                 WriteAddressA[5:0] <= DataInPage + 16;
+                 WriteAddressB[5:0] <= DataInPage + 96 -64;
               end
               2'h2: begin
-                 WriteAddressA[6:0] <= DataInPage + 32;
-                 WriteAddressB[6:0] <= DataInPage + 80;
+                 WriteAddressA[5:0] <= DataInPage + 32;
+                 WriteAddressB[5:0] <= DataInPage + 80 -64;
               end
               2'h3: begin
-                 WriteAddressA[6:0] <= DataInPage + 48;
-                 WriteAddressB[6:0] <= DataInPage + 64;
+                 WriteAddressA[5:0] <= DataInPage + 48;
+                 WriteAddressB[5:0] <= DataInPage + 64 -64;
               end
             endcase // case(DataInCount)
          end else begin // if (DataInColor[0] == 1'b0)
             case(DataInCount)
               2'h0: begin
-                 WriteAddressA[6:0] <= DataInPage +  0 +8;
-                 WriteAddressB[6:0] <= DataInPage +112 +8;
+                 WriteAddressA[5:0] <= DataInPage +  0 +8;
+                 WriteAddressB[5:0] <= DataInPage +112 +8 -64;
               end
               2'h1: begin
-                 WriteAddressA[6:0] <= DataInPage + 16 +8;
-                 WriteAddressB[6:0] <= DataInPage + 96 +8;
+                 WriteAddressA[5:0] <= DataInPage + 16 +8;
+                 WriteAddressB[5:0] <= DataInPage + 96 +8 -64;
               end
               2'h2: begin
-                 WriteAddressA[6:0] <= DataInPage + 32 +8;
-                 WriteAddressB[6:0] <= DataInPage + 80 +8;
+                 WriteAddressA[5:0] <= DataInPage + 32 +8;
+                 WriteAddressB[5:0] <= DataInPage + 80 +8 -64;
               end
               2'h3: begin
-                 WriteAddressA[6:0] <= DataInPage + 48 +8;
-                 WriteAddressB[6:0] <= DataInPage + 64 +8;
+                 WriteAddressA[5:0] <= DataInPage + 48 +8;
+                 WriteAddressB[5:0] <= DataInPage + 64 +8 -64;
               end
             endcase // case(DataInCount)
          end // else: !if(DataInColor[0] == 1'b0)
@@ -107,19 +107,19 @@ module jpeg_ycbcr_mem
          case(DataInCount)
            2'h0: begin
               WriteAddressA[5:0] <= DataInPage +  0;
-              WriteAddressB[5:0] <= DataInPage + 56;
+              WriteAddressB[5:0] <= DataInPage + 56 -32;
            end
            2'h1: begin
               WriteAddressA[5:0] <= DataInPage +  8;
-              WriteAddressB[5:0] <= DataInPage + 48;
+              WriteAddressB[5:0] <= DataInPage + 48 -32;
            end
            2'h2: begin
               WriteAddressA[5:0] <= DataInPage + 16;
-              WriteAddressB[5:0] <= DataInPage + 40;
+              WriteAddressB[5:0] <= DataInPage + 40 -32;
            end
            2'h3: begin
               WriteAddressA[5:0] <= DataInPage + 24;
-              WriteAddressB[5:0] <= DataInPage + 32;
+              WriteAddressB[5:0] <= DataInPage + 32 -32;
            end
          endcase // case(DataInCount)
       end // else: !if(DataInColor[2] == 1'b0)
@@ -134,15 +134,15 @@ module jpeg_ycbcr_mem
    
    always @(posedge clk) begin
       if(DataInColor == 3'b100 & DataInEnable == 1'b1) begin
-         MemCbA[WriteAddressA[5:0]] <= Data0In;
-         MemCbB[WriteAddressB[5:0]] <= Data1In;
+         MemCbA[WriteAddressA[4:0]] <= Data0In;
+         MemCbB[WriteAddressB[4:0]] <= Data1In;
       end
    end
    
    always @(posedge clk) begin
       if(DataInColor == 3'b101 & DataInEnable == 1'b1) begin
-         MemCrA[WriteAddressA[5:0]] <= Data0In;
-         MemCrB[WriteAddressB[5:0]] <= Data1In;
+         MemCrA[WriteAddressA[4:0]] <= Data0In;
+         MemCrB[WriteAddressB[4:0]] <= Data1In;
       end
    end
 
@@ -158,14 +158,14 @@ module jpeg_ycbcr_mem
    always @(posedge clk) begin
       RegAdrs <= DataOutAddress;
       
-      ReadYA  <= MemYA[DataOutAddress];
-      ReadYB  <= MemYB[DataOutAddress];
+      ReadYA  <= MemYA[{DataOutAddress[7],DataOutAddress[5:0]}];
+      ReadYB  <= MemYB[{DataOutAddress[7],DataOutAddress[5:0]}];
 
-      ReadCbA <= MemCbA[{DataOutAddress[7:5],DataOutAddress[3:1]}];
-      ReadCrA <= MemCrA[{DataOutAddress[7:5],DataOutAddress[3:1]}];
+      ReadCbA <= MemCbA[{DataOutAddress[6:5],DataOutAddress[3:1]}];
+      ReadCrA <= MemCrA[{DataOutAddress[6:5],DataOutAddress[3:1]}];
 
-      ReadCbB <= MemCbB[{DataOutAddress[7:5],DataOutAddress[3:1]}];
-      ReadCrB <= MemCrB[{DataOutAddress[7:5],DataOutAddress[3:1]}];
+      ReadCbB <= MemCbB[{DataOutAddress[6:5],DataOutAddress[3:1]}];
+      ReadCrB <= MemCrB[{DataOutAddress[6:5],DataOutAddress[3:1]}];
    end // always @ (posedge clk)
 
    assign DataOutY  = (RegAdrs[6] ==1'b0)?ReadYA:ReadYB;

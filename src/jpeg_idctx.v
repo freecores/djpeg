@@ -230,13 +230,14 @@ module jpeg_idctx
    assign DataInIdle = Phase1Enable == 1'b0 & DataOutIdle == 1'b1;
    assign DataInRelease = Phase1Enable == 1'b1 & Phase1Count == 3'd6 & Phase1Page == 3'd7;
    
-   reg signed [15:0]    Phase1R0w;
-   reg signed [15:0]    Phase1R1w;
-   reg signed [15:0]    Phase1C0w;
-   reg signed [15:0]    Phase1C1w;
-   reg signed [15:0]    Phase1C2w;
-   reg signed [15:0]    Phase1C3w;
+   wire signed [15:0]    Phase1R0w;
+   wire signed [15:0]    Phase1R1w;
+   wire signed [15:0]    Phase1C0w;
+   wire signed [15:0]    Phase1C1w;
+   wire signed [15:0]    Phase1C2w;
+   wire signed [15:0]    Phase1C3w;
 
+/*
    always @(*) begin
       case(Phase1Page)
         3'd0:begin
@@ -401,7 +402,427 @@ module jpeg_idctx
         end // case: 3'd7
       endcase // case(Phase1Page)
    end // always @ (*)
+*/
+	function [15:0] Phase1R0wSel;
+		input [2:0]	Phase1Page;
+		input [2:0]	Phase1Count;
+		input [15:0]	Data00In;
+		input [15:0]	Data01In;
+		input [15:0]	Data02In;
+		input [15:0]	Data03In;
+		input [15:0]	Data04In;
+		input [15:0]	Data05In;
+		input [15:0]	Data06In;
+		input [15:0]	Data07In;
+		input [15:0]	Data08In;
+		input [15:0]	Data09In;
+		input [15:0]	Data10In;
+		input [15:0]	Data11In;
+		input [15:0]	Data12In;
+		input [15:0]	Data13In;
+		input [15:0]	Data14In;
+		input [15:0]	Data15In;
+		input [15:0]	Data16In;
+		input [15:0]	Data17In;
+		input [15:0]	Data18In;
+		input [15:0]	Data19In;
+		input [15:0]	Data20In;
+		input [15:0]	Data21In;
+		input [15:0]	Data22In;
+		input [15:0]	Data23In;
+		input [15:0]	Data24In;
+		input [15:0]	Data25In;
+		input [15:0]	Data26In;
+		input [15:0]	Data27In;
+		input [15:0]	Data28In;
+		input [15:0]	Data29In;
+		input [15:0]	Data30In;
+		input [15:0]	Data31In;
+		input [15:0]	Data32In;
+		input [15:0]	Data33In;
+		input [15:0]	Data34In;
+		input [15:0]	Data35In;
+		input [15:0]	Data36In;
+		input [15:0]	Data37In;
+		input [15:0]	Data38In;
+		input [15:0]	Data39In;
+		input [15:0]	Data40In;
+		input [15:0]	Data41In;
+		input [15:0]	Data42In;
+		input [15:0]	Data43In;
+		input [15:0]	Data44In;
+		input [15:0]	Data45In;
+		input [15:0]	Data46In;
+		input [15:0]	Data47In;
+		input [15:0]	Data48In;
+		input [15:0]	Data49In;
+		input [15:0]	Data50In;
+		input [15:0]	Data51In;
+		input [15:0]	Data52In;
+		input [15:0]	Data53In;
+		input [15:0]	Data54In;
+		input [15:0]	Data55In;
+		input [15:0]	Data56In;
+		input [15:0]	Data57In;
+		input [15:0]	Data58In;
+		input [15:0]	Data59In;
+		input [15:0]	Data60In;
+		input [15:0]	Data61In;
+		input [15:0]	Data62In;
+		input [15:0]	Data63In;
+	begin
+      case(Phase1Page)
+        3'd0:begin
+           case(Phase1Count)
+             3'd0: begin
+                Phase1R0wSel = Data00In;
+             end
+             3'd1: begin
+                Phase1R0wSel = Data02In;
+             end
+             3'd2: begin
+                Phase1R0wSel = Data01In;
+             end
+             3'd3: begin
+                Phase1R0wSel = Data05In;
+             end
+           endcase // case(Phase1Count)
+        end // case: 3'd0
+        3'd1:begin
+           case(Phase1Count)
+             3'd0: begin
+                Phase1R0wSel = Data08In;
+             end
+             3'd1: begin
+                Phase1R0wSel = Data10In;
+             end
+             3'd2: begin
+                Phase1R0wSel = Data09In;
+             end
+             3'd3: begin
+                Phase1R0wSel = Data13In;
+             end
+           endcase // case(Phase1Count)
+        end // case: 3'd1
+        3'd2:begin
+           case(Phase1Count)
+             3'd0: begin
+                Phase1R0wSel = Data16In;
+             end
+             3'd1: begin
+                Phase1R0wSel = Data18In;
+             end
+             3'd2: begin
+                Phase1R0wSel = Data17In;
+             end
+             3'd3: begin
+                Phase1R0wSel = Data21In;
+             end
+           endcase // case(Phase1Count)
+        end // case: 3'd2
+        3'd3:begin
+           case(Phase1Count)
+             3'd0: begin
+                Phase1R0wSel = Data24In;
+             end
+             3'd1: begin
+                Phase1R0wSel = Data26In;
+             end
+             3'd2: begin
+                Phase1R0wSel = Data25In;
+             end
+             3'd3: begin
+                Phase1R0wSel = Data29In;
+             end
+           endcase // case(Phase1Count)
+        end // case: 3'd3
+        3'd4:begin
+           case(Phase1Count)
+             3'd0: begin
+                Phase1R0wSel = Data32In;
+             end
+             3'd1: begin
+                Phase1R0wSel = Data34In;
+             end
+             3'd2: begin
+                Phase1R0wSel = Data33In;
+             end
+             3'd3: begin
+                Phase1R0wSel = Data37In;
+             end
+           endcase // case(Phase1Count)
+        end // case: 3'd4
+        3'd5:begin
+           case(Phase1Count)
+             3'd0: begin
+                Phase1R0wSel = Data40In;
+             end
+             3'd1: begin
+                Phase1R0wSel = Data42In;
+             end
+             3'd2: begin
+                Phase1R0wSel = Data41In;
+             end
+             3'd3: begin
+                Phase1R0wSel = Data45In;
+             end
+           endcase // case(Phase1Count)
+        end // case: 3'd5
+        3'd6:begin
+           case(Phase1Count)
+             3'd0: begin
+                Phase1R0wSel = Data48In;
+             end
+             3'd1: begin
+                Phase1R0wSel = Data50In;
+             end
+             3'd2: begin
+                Phase1R0wSel = Data49In;
+             end
+             3'd3: begin
+                Phase1R0wSel = Data53In;
+             end
+           endcase // case(Phase1Count)
+        end // case: 3'd6
+        3'd7:begin
+           case(Phase1Count)
+             3'd0: begin
+                Phase1R0wSel = Data56In;
+             end
+             3'd1: begin
+                Phase1R0wSel = Data58In;
+             end
+             3'd2: begin
+                Phase1R0wSel = Data57In;
+             end
+             3'd3: begin
+                Phase1R0wSel = Data61In;
+             end
+           endcase // case(Phase1Count)
+        end // case: 3'd7
+      endcase // case(Phase1Page)
+	end
+	endfunction
+	function [15:0] Phase1R1wSel;
+		input [2:0]	Phase1Page;
+		input [2:0]	Phase1Count;
+		input [15:0]	Data00In;
+		input [15:0]	Data01In;
+		input [15:0]	Data02In;
+		input [15:0]	Data03In;
+		input [15:0]	Data04In;
+		input [15:0]	Data05In;
+		input [15:0]	Data06In;
+		input [15:0]	Data07In;
+		input [15:0]	Data08In;
+		input [15:0]	Data09In;
+		input [15:0]	Data10In;
+		input [15:0]	Data11In;
+		input [15:0]	Data12In;
+		input [15:0]	Data13In;
+		input [15:0]	Data14In;
+		input [15:0]	Data15In;
+		input [15:0]	Data16In;
+		input [15:0]	Data17In;
+		input [15:0]	Data18In;
+		input [15:0]	Data19In;
+		input [15:0]	Data20In;
+		input [15:0]	Data21In;
+		input [15:0]	Data22In;
+		input [15:0]	Data23In;
+		input [15:0]	Data24In;
+		input [15:0]	Data25In;
+		input [15:0]	Data26In;
+		input [15:0]	Data27In;
+		input [15:0]	Data28In;
+		input [15:0]	Data29In;
+		input [15:0]	Data30In;
+		input [15:0]	Data31In;
+		input [15:0]	Data32In;
+		input [15:0]	Data33In;
+		input [15:0]	Data34In;
+		input [15:0]	Data35In;
+		input [15:0]	Data36In;
+		input [15:0]	Data37In;
+		input [15:0]	Data38In;
+		input [15:0]	Data39In;
+		input [15:0]	Data40In;
+		input [15:0]	Data41In;
+		input [15:0]	Data42In;
+		input [15:0]	Data43In;
+		input [15:0]	Data44In;
+		input [15:0]	Data45In;
+		input [15:0]	Data46In;
+		input [15:0]	Data47In;
+		input [15:0]	Data48In;
+		input [15:0]	Data49In;
+		input [15:0]	Data50In;
+		input [15:0]	Data51In;
+		input [15:0]	Data52In;
+		input [15:0]	Data53In;
+		input [15:0]	Data54In;
+		input [15:0]	Data55In;
+		input [15:0]	Data56In;
+		input [15:0]	Data57In;
+		input [15:0]	Data58In;
+		input [15:0]	Data59In;
+		input [15:0]	Data60In;
+		input [15:0]	Data61In;
+		input [15:0]	Data62In;
+		input [15:0]	Data63In;
+	begin
+      case(Phase1Page)
+        3'd0:begin
+           case(Phase1Count)
+             3'd0: begin
+                Phase1R1wSel = Data04In;
+             end
+             3'd1: begin
+                Phase1R1wSel = Data06In;
+             end
+             3'd2: begin
+                Phase1R1wSel = Data07In;
+             end
+             3'd3: begin
+                Phase1R1wSel = Data03In;
+             end
+           endcase // case(Phase1Count)
+        end // case: 3'd0
+        3'd1:begin
+           case(Phase1Count)
+             3'd0: begin
+                Phase1R1wSel = Data12In;
+             end
+             3'd1: begin
+                Phase1R1wSel = Data14In;
+             end
+             3'd2: begin
+                Phase1R1wSel = Data15In;
+             end
+             3'd3: begin
+                Phase1R1wSel = Data11In;
+             end
+           endcase // case(Phase1Count)
+        end // case: 3'd1
+        3'd2:begin
+           case(Phase1Count)
+             3'd0: begin
+                Phase1R1wSel = Data20In;
+             end
+             3'd1: begin
+                Phase1R1wSel = Data22In;
+             end
+             3'd2: begin
+                Phase1R1wSel = Data23In;
+             end
+             3'd3: begin
+                Phase1R1wSel = Data19In;
+             end
+           endcase // case(Phase1Count)
+        end // case: 3'd2
+        3'd3:begin
+           case(Phase1Count)
+             3'd0: begin
+                Phase1R1wSel = Data28In;
+             end
+             3'd1: begin
+                Phase1R1wSel = Data30In;
+             end
+             3'd2: begin
+                Phase1R1wSel = Data31In;
+             end
+             3'd3: begin
+                Phase1R1wSel = Data27In;
+             end
+           endcase // case(Phase1Count)
+        end // case: 3'd3
+        3'd4:begin
+           case(Phase1Count)
+             3'd0: begin
+                Phase1R1wSel = Data36In;
+             end
+             3'd1: begin
+                Phase1R1wSel = Data38In;
+             end
+             3'd2: begin
+                Phase1R1wSel = Data39In;
+             end
+             3'd3: begin
+                Phase1R1wSel = Data35In;
+             end
+           endcase // case(Phase1Count)
+        end // case: 3'd4
+        3'd5:begin
+           case(Phase1Count)
+             3'd0: begin
+                Phase1R1wSel = Data44In;
+             end
+             3'd1: begin
+                Phase1R1wSel = Data46In;
+             end
+             3'd2: begin
+                Phase1R1wSel = Data47In;
+             end
+             3'd3: begin
+                Phase1R1wSel = Data43In;
+             end
+           endcase // case(Phase1Count)
+        end // case: 3'd5
+        3'd6:begin
+           case(Phase1Count)
+             3'd0: begin
+                Phase1R1wSel = Data52In;
+             end
+             3'd1: begin
+                Phase1R1wSel = Data54In;
+             end
+             3'd2: begin
+                Phase1R1wSel = Data55In;
+             end
+             3'd3: begin
+                Phase1R1wSel = Data51In;
+             end
+           endcase // case(Phase1Count)
+        end // case: 3'd6
+        3'd7:begin
+           case(Phase1Count)
+             3'd0: begin
+                Phase1R1wSel = Data60In;
+             end
+             3'd1: begin
+                Phase1R1wSel = Data62In;
+             end
+             3'd2: begin
+                Phase1R1wSel = Data63In;
+             end
+             3'd3: begin
+                Phase1R1wSel = Data59In;
+             end
+           endcase // case(Phase1Count)
+        end // case: 3'd7
+      endcase // case(Phase1Page)
+	end
+	endfunction
 
+	assign Phase1R0w = Phase1R0wSel(Phase1Page, Phase1Count,
+									Data00In, Data01In, Data02In, Data03In, Data04In, Data05In, Data06In, Data07In, Data08In, Data09In,
+									Data10In, Data11In, Data12In, Data13In, Data14In, Data15In, Data16In, Data17In, Data18In, Data19In,
+									Data20In, Data21In, Data22In, Data23In, Data24In, Data25In, Data26In, Data27In, Data28In, Data29In,
+									Data30In, Data31In, Data32In, Data33In, Data34In, Data35In, Data36In, Data37In, Data38In, Data39In,
+									Data40In, Data41In, Data42In, Data43In, Data44In, Data45In, Data46In, Data47In, Data48In, Data49In,
+									Data50In, Data51In, Data52In, Data53In, Data54In, Data55In, Data56In, Data57In, Data58In, Data59In,
+									Data60In, Data61In, Data62In, Data63In
+									);
+	assign Phase1R1w = Phase1R1wSel(Phase1Page, Phase1Count,
+									Data00In, Data01In, Data02In, Data03In, Data04In, Data05In, Data06In, Data07In, Data08In, Data09In,
+									Data10In, Data11In, Data12In, Data13In, Data14In, Data15In, Data16In, Data17In, Data18In, Data19In,
+									Data20In, Data21In, Data22In, Data23In, Data24In, Data25In, Data26In, Data27In, Data28In, Data29In,
+									Data30In, Data31In, Data32In, Data33In, Data34In, Data35In, Data36In, Data37In, Data38In, Data39In,
+									Data40In, Data41In, Data42In, Data43In, Data44In, Data45In, Data46In, Data47In, Data48In, Data49In,
+									Data50In, Data51In, Data52In, Data53In, Data54In, Data55In, Data56In, Data57In, Data58In, Data59In,
+									Data60In, Data61In, Data62In, Data63In
+									);
+/*
    always @(*) begin
       case(Phase1Count)
         3'd0: begin
@@ -428,10 +849,93 @@ module jpeg_idctx
            Phase1C2w <= 16'd3406; // C3_16
            Phase1C3w <= 16'd2276; // C5_16
         end
-        
       endcase // case(Phase1Count)
-      
    end // always @ (*)
+*/
+	function [15:0] Phase1C0wSel;
+		input [2:0]	Phase1Count;
+	begin
+      case(Phase1Count)
+        3'd0: begin
+           Phase1C0wSel = 16'd2896; // C4_16
+        end
+        3'd1: begin
+           Phase1C0wSel = 16'd3784; // C2_16
+        end
+        3'd2: begin
+           Phase1C0wSel = 16'd4017; // C1_16
+        end
+        3'd3: begin
+           Phase1C0wSel = 16'd2276; // C5_16
+        end
+      endcase // case(Phase1Count)
+	end
+	endfunction
+
+	function [15:0] Phase1C1wSel;
+		input [2:0]	Phase1Count;
+	begin
+      case(Phase1Count)
+        3'd0: begin
+           Phase1C1wSel = 16'd2896; // C4_16
+        end
+        3'd1: begin
+           Phase1C1wSel = 16'd1567; // C6_16
+        end
+        3'd2: begin
+           Phase1C1wSel = 16'd799;  // C7_16
+        end
+        3'd3: begin
+           Phase1C1wSel = 16'd3406; // C3_16
+        end
+      endcase // case(Phase1Count)
+	end
+	endfunction
+
+	function [15:0] Phase1C2wSel;
+		input [2:0]	Phase1Count;
+	begin
+      case(Phase1Count)
+        3'd0: begin
+           Phase1C2wSel = 16'd2896; // C4_16
+        end
+        3'd1: begin
+           Phase1C2wSel = 16'd1567; // C6_16
+        end
+        3'd2: begin
+           Phase1C2wSel = 16'd799;  // C7_16
+        end
+        3'd3: begin
+           Phase1C2wSel = 16'd3406; // C3_16
+        end
+      endcase // case(Phase1Count)
+	end
+	endfunction
+
+	function [15:0] Phase1C3wSel;
+		input [2:0]	Phase1Count;
+	begin
+      case(Phase1Count)
+        3'd0: begin
+           Phase1C3wSel = 16'd2896; // C4_16
+        end
+        3'd1: begin
+           Phase1C3wSel = 16'd3784; // C2_16
+        end
+        3'd2: begin
+           Phase1C3wSel = 16'd4017; // C1_16
+        end
+        3'd3: begin
+           Phase1C3wSel = 16'd2276; // C5_16
+        end
+      endcase // case(Phase1Count)
+	end
+	endfunction
+
+	assign Phase1C0w = Phase1C0wSel(Phase1Count);
+	assign Phase1C1w = Phase1C1wSel(Phase1Count);
+	assign Phase1C2w = Phase1C2wSel(Phase1Count);
+	assign Phase1C3w = Phase1C3wSel(Phase1Count);
 
    reg signed [31:0] Phase1R0r;
    reg signed [31:0] Phase1R1r;
@@ -482,13 +986,16 @@ module jpeg_idctx
       end // else: !if(!rst)
    end // always @ (posedge clk or negedge rst)
 
-   reg signed [31:0] Phase2A0w;
-   reg signed [31:0] Phase2A1w;
-   
+   wire signed [31:0] Phase2A0w;
+   wire signed [31:0] Phase2A1w;
+/*   
    always @(*) begin
       Phase2A0w <= Phase1R0r + Phase1R1r;
       Phase2A1w <= Phase1R2r - Phase1R3r;
    end
+*/
+	assign Phase2A0w = Phase1R0r + Phase1R1r;
+	assign Phase2A1w = Phase1R2r - Phase1R3r;
       
    reg signed [31:0] Phase2Reg [0:7];
    
@@ -572,14 +1079,17 @@ module jpeg_idctx
    
    
    
-   reg signed [31:0] Phase3A0w;
-   reg signed [31:0] Phase3A1w;
-
+   wire signed [31:0] Phase3A0w;
+   wire signed [31:0] Phase3A1w;
+/*
    always @(*) begin
       Phase3A0w <= Phase3R0w + Phase3R1w;
       Phase3A1w <= Phase3R0w - Phase3R1w;
    end
-      
+*/      
+	assign Phase3A0w = Phase3R0w + Phase3R1w;
+	assign Phase3A1w = Phase3R0w - Phase3R1w;
+
    reg signed [31:0] Phase3Reg [0:7];
    
    always @(posedge clk or negedge rst) begin

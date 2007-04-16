@@ -58,7 +58,7 @@ module jpeg_dht
    reg [7:0] 	ReadDataCdc;
    reg [7:0] 	ReadDataCac;
 
-   reg [7:0] 	ReadData;
+   wire [7:0] 	ReadData;
    
    // RAM
    always @(posedge clk) begin
@@ -84,6 +84,7 @@ module jpeg_dht
    end // always @ (posedge clk or negedge rst)
    
    // Selector
+/*
    always @(*) begin
       case (ColorNumber)
         2'b00: ReadData <= ReadDataYdc;
@@ -92,6 +93,24 @@ module jpeg_dht
         2'b11: ReadData <= ReadDataCac;
       endcase // case(ColorNumber)
    end
+*/
+	function [7:0] ReadDataSel;
+		input [1:0]	ColorNumber;
+		input [7:0]	ReadDataYdc;
+		input [7:0]	ReadDataYac;
+		input [7:0]	ReadDataCdc;
+		input [7:0]	ReadDataCac;
+	begin
+		case (ColorNumber)
+		2'b00: ReadDataSel = ReadDataYdc;
+		2'b01: ReadDataSel = ReadDataYac;
+		2'b10: ReadDataSel = ReadDataCdc;
+		2'b11: ReadDataSel = ReadDataCac;
+		endcase
+	end
+	endfunction
+   
+   assign ReadData = ReadDataSel(ColorNumber, ReadDataYdc, ReadDataYac, ReadDataCdc, ReadDataCac);
    
    assign ZeroTable  = ReadData[7:4];
    assign WidhtTable = ReadData[3:0];

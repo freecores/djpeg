@@ -117,7 +117,6 @@ module jpeg_hm_decode
    
    always @(posedge clk or negedge rst) begin
       if(!rst) begin
-         for(i=0;i<16;i=i+1) begin
             HaffumanTable0r[0]  <= 16'h0000; 
             HaffumanNumber0r[0] <=  8'h00;
             HaffumanTable1r[0]  <= 16'h0000; 
@@ -126,7 +125,141 @@ module jpeg_hm_decode
             HaffumanNumber2r[0] <=  8'h00;
             HaffumanTable3r[0]  <= 16'h0000; 
             HaffumanNumber3r[0] <=  8'h00;
-         end
+
+            HaffumanTable0r[1]  <= 16'h0000; 
+            HaffumanNumber0r[1] <=  8'h00;
+            HaffumanTable1r[1]  <= 16'h0000; 
+            HaffumanNumber1r[1] <=  8'h00;
+            HaffumanTable2r[1]  <= 16'h0000; 
+            HaffumanNumber2r[1] <=  8'h00;
+            HaffumanTable3r[1]  <= 16'h0000; 
+            HaffumanNumber3r[1] <=  8'h00;
+
+            HaffumanTable0r[2]  <= 16'h0000; 
+            HaffumanNumber0r[2] <=  8'h00;
+            HaffumanTable1r[2]  <= 16'h0000; 
+            HaffumanNumber1r[2] <=  8'h00;
+            HaffumanTable2r[2]  <= 16'h0000; 
+            HaffumanNumber2r[2] <=  8'h00;
+            HaffumanTable3r[2]  <= 16'h0000; 
+            HaffumanNumber3r[2] <=  8'h00;
+
+            HaffumanTable0r[3]  <= 16'h0000; 
+            HaffumanNumber0r[3] <=  8'h00;
+            HaffumanTable1r[3]  <= 16'h0000; 
+            HaffumanNumber1r[3] <=  8'h00;
+            HaffumanTable2r[3]  <= 16'h0000; 
+            HaffumanNumber2r[3] <=  8'h00;
+            HaffumanTable3r[3]  <= 16'h0000; 
+            HaffumanNumber3r[3] <=  8'h00;
+
+            HaffumanTable0r[4]  <= 16'h0000; 
+            HaffumanNumber0r[4] <=  8'h00;
+            HaffumanTable1r[4]  <= 16'h0000; 
+            HaffumanNumber1r[4] <=  8'h00;
+            HaffumanTable2r[4]  <= 16'h0000; 
+            HaffumanNumber2r[4] <=  8'h00;
+            HaffumanTable3r[4]  <= 16'h0000; 
+            HaffumanNumber3r[4] <=  8'h00;
+
+            HaffumanTable0r[5]  <= 16'h0000; 
+            HaffumanNumber0r[5] <=  8'h00;
+            HaffumanTable1r[5]  <= 16'h0000; 
+            HaffumanNumber1r[5] <=  8'h00;
+            HaffumanTable2r[5]  <= 16'h0000; 
+            HaffumanNumber2r[5] <=  8'h00;
+            HaffumanTable3r[5]  <= 16'h0000; 
+            HaffumanNumber3r[5] <=  8'h00;
+
+            HaffumanTable0r[6]  <= 16'h0000; 
+            HaffumanNumber0r[6] <=  8'h00;
+            HaffumanTable1r[6]  <= 16'h0000; 
+            HaffumanNumber1r[6] <=  8'h00;
+            HaffumanTable2r[6]  <= 16'h0000; 
+            HaffumanNumber2r[6] <=  8'h00;
+            HaffumanTable3r[6]  <= 16'h0000; 
+            HaffumanNumber3r[6] <=  8'h00;
+
+            HaffumanTable0r[7]  <= 16'h0000; 
+            HaffumanNumber0r[7] <=  8'h00;
+            HaffumanTable1r[7]  <= 16'h0000; 
+            HaffumanNumber1r[7] <=  8'h00;
+            HaffumanTable2r[7]  <= 16'h0000; 
+            HaffumanNumber2r[7] <=  8'h00;
+            HaffumanTable3r[7]  <= 16'h0000; 
+            HaffumanNumber3r[7] <=  8'h00;
+
+            HaffumanTable0r[8]  <= 16'h0000; 
+            HaffumanNumber0r[8] <=  8'h00;
+            HaffumanTable1r[8]  <= 16'h0000; 
+            HaffumanNumber1r[8] <=  8'h00;
+            HaffumanTable2r[8]  <= 16'h0000; 
+            HaffumanNumber2r[8] <=  8'h00;
+            HaffumanTable3r[8]  <= 16'h0000; 
+            HaffumanNumber3r[8] <=  8'h00;
+
+            HaffumanTable0r[9]  <= 16'h0000; 
+            HaffumanNumber0r[9] <=  8'h00;
+            HaffumanTable1r[9]  <= 16'h0000; 
+            HaffumanNumber1r[9] <=  8'h00;
+            HaffumanTable2r[9]  <= 16'h0000; 
+            HaffumanNumber2r[9] <=  8'h00;
+            HaffumanTable3r[9]  <= 16'h0000; 
+            HaffumanNumber3r[9] <=  8'h00;
+
+            HaffumanTable0r[10]  <= 16'h0000; 
+            HaffumanNumber0r[10] <=  8'h00;
+            HaffumanTable1r[10]  <= 16'h0000; 
+            HaffumanNumber1r[10] <=  8'h00;
+            HaffumanTable2r[10]  <= 16'h0000; 
+            HaffumanNumber2r[10] <=  8'h00;
+            HaffumanTable3r[10]  <= 16'h0000; 
+            HaffumanNumber3r[10] <=  8'h00;
+
+            HaffumanTable0r[11]  <= 16'h0000; 
+            HaffumanNumber0r[11] <=  8'h00;
+            HaffumanTable1r[11]  <= 16'h0000; 
+            HaffumanNumber1r[11] <=  8'h00;
+            HaffumanTable2r[11]  <= 16'h0000; 
+            HaffumanNumber2r[11] <=  8'h00;
+            HaffumanTable3r[11]  <= 16'h0000; 
+            HaffumanNumber3r[11] <=  8'h00;
+
+            HaffumanTable0r[12]  <= 16'h0000; 
+            HaffumanNumber0r[12] <=  8'h00;
+            HaffumanTable1r[12]  <= 16'h0000; 
+            HaffumanNumber1r[12] <=  8'h00;
+            HaffumanTable2r[12]  <= 16'h0000; 
+            HaffumanNumber2r[12] <=  8'h00;
+            HaffumanTable3r[12]  <= 16'h0000; 
+            HaffumanNumber3r[12] <=  8'h00;
+
+            HaffumanTable0r[13]  <= 16'h0000; 
+            HaffumanNumber0r[13] <=  8'h00;
+            HaffumanTable1r[13]  <= 16'h0000; 
+            HaffumanNumber1r[13] <=  8'h00;
+            HaffumanTable2r[13]  <= 16'h0000; 
+            HaffumanNumber2r[13] <=  8'h00;
+            HaffumanTable3r[13]  <= 16'h0000; 
+            HaffumanNumber3r[13] <=  8'h00;
+
+            HaffumanTable0r[14]  <= 16'h0000; 
+            HaffumanNumber0r[14] <=  8'h00;
+            HaffumanTable1r[14]  <= 16'h0000; 
+            HaffumanNumber1r[14] <=  8'h00;
+            HaffumanTable2r[14]  <= 16'h0000; 
+            HaffumanNumber2r[14] <=  8'h00;
+            HaffumanTable3r[14]  <= 16'h0000; 
+            HaffumanNumber3r[14] <=  8'h00;
+
+            HaffumanTable0r[15]  <= 16'h0000; 
+            HaffumanNumber0r[15] <=  8'h00;
+            HaffumanTable1r[15]  <= 16'h0000; 
+            HaffumanNumber1r[15] <=  8'h00;
+            HaffumanTable2r[15]  <= 16'h0000; 
+            HaffumanNumber2r[15] <=  8'h00;
+            HaffumanTable3r[15]  <= 16'h0000; 
+            HaffumanNumber3r[15] <=  8'h00;
       end else begin // if (!rst)
          if(HaffumanTableEnable ==2'b1) begin
             if(HaffumanTableColor ==2'b00) begin
@@ -173,7 +306,7 @@ module jpeg_hm_decode
    reg 		   OutEnable;       // Output Enable
    reg [3:0] 	   OutZero;         // Output Zero Count
    reg [15:0] 	   OutCode;         // Output Data Code
-   reg [15:0] 	   OutCodeP;        // Output Data Code
+   wire [15:0] 	   OutCodeP;        // Output Data Code
    
    reg [4:0] 	   UseWidth;        // Output used width
    
@@ -184,7 +317,7 @@ module jpeg_hm_decode
    
    reg signed [31:0] PreData [0:2];
    
-   reg [15:0] 	     SubCode;
+   wire [15:0] 	     SubCode;
    
    parameter 	     ProcIdle = 4'h0;
    parameter 	     Phase1   = 4'h1;
@@ -199,6 +332,7 @@ module jpeg_hm_decode
    parameter 	     Phase10  = 4'hA;
    parameter 	     Phase11  = 4'hB;
 
+/*
    always @(*) begin
       case (DhtWidth)
         4'h0: OutCodeP <= 16'h0000;
@@ -237,7 +371,58 @@ module jpeg_hm_decode
         4'hF: SubCode <= 16'h8000;
       endcase // case(DhtWidth)
    end // always @ (*)
+*/
 
+	function [15:0] OutCodePSel;
+		input [3:0]	DhtWidth;
+		input [31:0]	ProcessData;
+	begin
+		case (DhtWidth)
+        4'h0: OutCodePSel = 16'h0000;
+        4'h1: OutCodePSel = {15'h0000,ProcessData[31]};
+        4'h2: OutCodePSel = {14'h0000,ProcessData[31:30]};
+        4'h3: OutCodePSel = {13'h0000,ProcessData[31:29]};
+        4'h4: OutCodePSel = {12'h000, ProcessData[31:28]};
+        4'h5: OutCodePSel = {11'h000, ProcessData[31:27]};
+        4'h6: OutCodePSel = {10'h000, ProcessData[31:26]};
+        4'h7: OutCodePSel = {9'h000,  ProcessData[31:25]};
+        4'h8: OutCodePSel = {8'h00,   ProcessData[31:24]};
+        4'h9: OutCodePSel = {7'h00,   ProcessData[31:23]};
+        4'hA: OutCodePSel = {6'h00,   ProcessData[31:22]};
+        4'hB: OutCodePSel = {5'h00,   ProcessData[31:21]};
+        4'hC: OutCodePSel = {4'h0,    ProcessData[31:20]};
+        4'hD: OutCodePSel = {3'h0,    ProcessData[31:19]};
+        4'hE: OutCodePSel = {2'h0,    ProcessData[31:18]};
+        4'hF: OutCodePSel = {1'h0,    ProcessData[31:17]};
+		endcase // case(DhtWidth)
+	end
+	endfunction
+	assign OutCodeP = OutCodePSel(DhtWidth, ProcessData);
+	
+	function [15:0] SubCodeSel;
+		input [3:0]	DhtWidth;
+	begin
+      case (DhtWidth)
+        4'h0: SubCodeSel = 16'hFFFF;
+        4'h1: SubCodeSel = 16'hFFFE;
+        4'h2: SubCodeSel = 16'hFFFC;
+        4'h3: SubCodeSel = 16'hFFF8;
+        4'h4: SubCodeSel = 16'hFFF0;
+        4'h5: SubCodeSel = 16'hFFE0;
+        4'h6: SubCodeSel = 16'hFFC0;
+        4'h7: SubCodeSel = 16'hFF80;
+        4'h8: SubCodeSel = 16'hFF00;
+        4'h9: SubCodeSel = 16'hFE00;
+        4'hA: SubCodeSel = 16'hFC00;
+        4'hB: SubCodeSel = 16'hF800;
+        4'hC: SubCodeSel = 16'hF000;
+        4'hD: SubCodeSel = 16'hE000;
+        4'hE: SubCodeSel = 16'hC000;
+        4'hF: SubCodeSel = 16'h8000;
+      endcase // case(DhtWidth)
+	end
+	endfunction
+	assign SubCode = SubCodeSel(DhtWidth);
    
    always @(posedge clk or negedge rst) begin
       if(!rst) begin
@@ -250,6 +435,7 @@ module jpeg_hm_decode
          PreData[1]    <= 32'h00000000;
          PreData[2]    <= 32'h00000000;
          UseWidth      <= 7'h00;
+         CodeNumber		<= 4'd0;
       end else begin // if (!rst)
          case (Process)
            ProcIdle: begin
@@ -277,39 +463,177 @@ module jpeg_hm_decode
               DataOutEnable <= 1'b0;
               if(ProcessColor[2] == 1'b0) begin
                  if(ProcessCount == 0) begin
-                    for(i=0;i<16;i=i+1) begin
-                       HaffumanTable[i]  <= HaffumanTable0r[i];
-                       HaffumanNumber[i] <= HaffumanNumber0r[i];
-                    end
+                       HaffumanTable[0]  <= HaffumanTable0r[0];
+                       HaffumanNumber[0] <= HaffumanNumber0r[0];
+                       HaffumanTable[1]  <= HaffumanTable0r[1];
+                       HaffumanNumber[1] <= HaffumanNumber0r[1];
+                       HaffumanTable[2]  <= HaffumanTable0r[2];
+                       HaffumanNumber[2] <= HaffumanNumber0r[2];
+                       HaffumanTable[3]  <= HaffumanTable0r[3];
+                       HaffumanNumber[3] <= HaffumanNumber0r[3];
+                       HaffumanTable[4]  <= HaffumanTable0r[4];
+                       HaffumanNumber[4] <= HaffumanNumber0r[4];
+                       HaffumanTable[5]  <= HaffumanTable0r[5];
+                       HaffumanNumber[5] <= HaffumanNumber0r[5];
+                       HaffumanTable[6]  <= HaffumanTable0r[6];
+                       HaffumanNumber[6] <= HaffumanNumber0r[6];
+                       HaffumanTable[7]  <= HaffumanTable0r[7];
+                       HaffumanNumber[7] <= HaffumanNumber0r[7];
+                       HaffumanTable[8]  <= HaffumanTable0r[8];
+                       HaffumanNumber[8] <= HaffumanNumber0r[8];
+                       HaffumanTable[9]  <= HaffumanTable0r[9];
+                       HaffumanNumber[9] <= HaffumanNumber0r[9];
+                       HaffumanTable[10]  <= HaffumanTable0r[10];
+                       HaffumanNumber[10] <= HaffumanNumber0r[10];
+                       HaffumanTable[11]  <= HaffumanTable0r[11];
+                       HaffumanNumber[11] <= HaffumanNumber0r[11];
+                       HaffumanTable[12]  <= HaffumanTable0r[12];
+                       HaffumanNumber[12] <= HaffumanNumber0r[12];
+                       HaffumanTable[13]  <= HaffumanTable0r[13];
+                       HaffumanNumber[13] <= HaffumanNumber0r[13];
+                       HaffumanTable[14]  <= HaffumanTable0r[14];
+                       HaffumanNumber[14] <= HaffumanNumber0r[14];
+                       HaffumanTable[15]  <= HaffumanTable0r[15];
+                       HaffumanNumber[15] <= HaffumanNumber0r[15];
                  end else begin
-                    for(i=0;i<16;i=i+1) begin
-                       HaffumanTable[i]  <= HaffumanTable1r[i];
-                       HaffumanNumber[i] <= HaffumanNumber1r[i];
-                    end
+                       HaffumanTable[0]  <= HaffumanTable1r[0];
+                       HaffumanNumber[0] <= HaffumanNumber1r[0];
+                       HaffumanTable[1]  <= HaffumanTable1r[1];
+                       HaffumanNumber[1] <= HaffumanNumber1r[1];
+                       HaffumanTable[2]  <= HaffumanTable1r[2];
+                       HaffumanNumber[2] <= HaffumanNumber1r[2];
+                       HaffumanTable[3]  <= HaffumanTable1r[3];
+                       HaffumanNumber[3] <= HaffumanNumber1r[3];
+                       HaffumanTable[4]  <= HaffumanTable1r[4];
+                       HaffumanNumber[4] <= HaffumanNumber1r[4];
+                       HaffumanTable[5]  <= HaffumanTable1r[5];
+                       HaffumanNumber[5] <= HaffumanNumber1r[5];
+                       HaffumanTable[6]  <= HaffumanTable1r[6];
+                       HaffumanNumber[6] <= HaffumanNumber1r[6];
+                       HaffumanTable[7]  <= HaffumanTable1r[7];
+                       HaffumanNumber[7] <= HaffumanNumber1r[7];
+                       HaffumanTable[8]  <= HaffumanTable1r[8];
+                       HaffumanNumber[8] <= HaffumanNumber1r[8];
+                       HaffumanTable[9]  <= HaffumanTable1r[9];
+                       HaffumanNumber[9] <= HaffumanNumber1r[9];
+                       HaffumanTable[10]  <= HaffumanTable1r[10];
+                       HaffumanNumber[10] <= HaffumanNumber1r[10];
+                       HaffumanTable[11]  <= HaffumanTable1r[11];
+                       HaffumanNumber[11] <= HaffumanNumber1r[11];
+                       HaffumanTable[12]  <= HaffumanTable1r[12];
+                       HaffumanNumber[12] <= HaffumanNumber1r[12];
+                       HaffumanTable[13]  <= HaffumanTable1r[13];
+                       HaffumanNumber[13] <= HaffumanNumber1r[13];
+                       HaffumanTable[14]  <= HaffumanTable1r[14];
+                       HaffumanNumber[14] <= HaffumanNumber1r[14];
+                       HaffumanTable[15]  <= HaffumanTable1r[15];
+                       HaffumanNumber[15] <= HaffumanNumber1r[15];
                  end // else: !if(ProcessCount == 0)
               end else begin // if (ProcessColor[2] == 1'b0)
                  if(ProcessCount == 0) begin
-                    for(i=0;i<16;i=i+1) begin
-                       HaffumanTable[i]  <= HaffumanTable2r[i];
-                       HaffumanNumber[i] <= HaffumanNumber2r[i];
-                    end
+                       HaffumanTable[0]  <= HaffumanTable2r[0];
+                       HaffumanNumber[0] <= HaffumanNumber2r[0];
+                       HaffumanTable[1]  <= HaffumanTable2r[1];
+                       HaffumanNumber[1] <= HaffumanNumber2r[1];
+                       HaffumanTable[2]  <= HaffumanTable2r[2];
+                       HaffumanNumber[2] <= HaffumanNumber2r[2];
+                       HaffumanTable[3]  <= HaffumanTable2r[3];
+                       HaffumanNumber[3] <= HaffumanNumber2r[3];
+                       HaffumanTable[4]  <= HaffumanTable2r[4];
+                       HaffumanNumber[4] <= HaffumanNumber2r[4];
+                       HaffumanTable[5]  <= HaffumanTable2r[5];
+                       HaffumanNumber[5] <= HaffumanNumber2r[5];
+                       HaffumanTable[6]  <= HaffumanTable2r[6];
+                       HaffumanNumber[6] <= HaffumanNumber2r[6];
+                       HaffumanTable[7]  <= HaffumanTable2r[7];
+                       HaffumanNumber[7] <= HaffumanNumber2r[7];
+                       HaffumanTable[8]  <= HaffumanTable2r[8];
+                       HaffumanNumber[8] <= HaffumanNumber2r[8];
+                       HaffumanTable[9]  <= HaffumanTable2r[9];
+                       HaffumanNumber[9] <= HaffumanNumber2r[9];
+                       HaffumanTable[10]  <= HaffumanTable2r[10];
+                       HaffumanNumber[10] <= HaffumanNumber2r[10];
+                       HaffumanTable[11]  <= HaffumanTable2r[11];
+                       HaffumanNumber[11] <= HaffumanNumber2r[11];
+                       HaffumanTable[12]  <= HaffumanTable2r[12];
+                       HaffumanNumber[12] <= HaffumanNumber2r[12];
+                       HaffumanTable[13]  <= HaffumanTable2r[13];
+                       HaffumanNumber[13] <= HaffumanNumber2r[13];
+                       HaffumanTable[14]  <= HaffumanTable2r[14];
+                       HaffumanNumber[14] <= HaffumanNumber2r[14];
+                       HaffumanTable[15]  <= HaffumanTable2r[15];
+                       HaffumanNumber[15] <= HaffumanNumber2r[15];
                  end else begin
-                    for(i=0;i<16;i=i+1) begin
-                       HaffumanTable[i]  <= HaffumanTable3r[i];
-                       HaffumanNumber[i] <= HaffumanNumber3r[i];
-                    end
+                       HaffumanTable[0]  <= HaffumanTable3r[0];
+                       HaffumanNumber[0] <= HaffumanNumber3r[0];
+                       HaffumanTable[1]  <= HaffumanTable3r[1];
+                       HaffumanNumber[1] <= HaffumanNumber3r[1];
+                       HaffumanTable[2]  <= HaffumanTable3r[2];
+                       HaffumanNumber[2] <= HaffumanNumber3r[2];
+                       HaffumanTable[3]  <= HaffumanTable3r[3];
+                       HaffumanNumber[3] <= HaffumanNumber3r[3];
+                       HaffumanTable[4]  <= HaffumanTable3r[4];
+                       HaffumanNumber[4] <= HaffumanNumber3r[4];
+                       HaffumanTable[5]  <= HaffumanTable3r[5];
+                       HaffumanNumber[5] <= HaffumanNumber3r[5];
+                       HaffumanTable[6]  <= HaffumanTable3r[6];
+                       HaffumanNumber[6] <= HaffumanNumber3r[6];
+                       HaffumanTable[7]  <= HaffumanTable3r[7];
+                       HaffumanNumber[7] <= HaffumanNumber3r[7];
+                       HaffumanTable[8]  <= HaffumanTable3r[8];
+                       HaffumanNumber[8] <= HaffumanNumber3r[8];
+                       HaffumanTable[9]  <= HaffumanTable3r[9];
+                       HaffumanNumber[9] <= HaffumanNumber3r[9];
+                       HaffumanTable[10]  <= HaffumanTable3r[10];
+                       HaffumanNumber[10] <= HaffumanNumber3r[10];
+                       HaffumanTable[11]  <= HaffumanTable3r[11];
+                       HaffumanNumber[11] <= HaffumanNumber3r[11];
+                       HaffumanTable[12]  <= HaffumanTable3r[12];
+                       HaffumanNumber[12] <= HaffumanNumber3r[12];
+                       HaffumanTable[13]  <= HaffumanTable3r[13];
+                       HaffumanNumber[13] <= HaffumanNumber3r[13];
+                       HaffumanTable[14]  <= HaffumanTable3r[14];
+                       HaffumanNumber[14] <= HaffumanNumber3r[14];
+                       HaffumanTable[15]  <= HaffumanTable3r[15];
+                       HaffumanNumber[15] <= HaffumanNumber3r[15];
                  end // else: !if(ProcessCount == 0)
               end // else: !if(ProcessColor[2] == 1'b0)
            end // case: Phase1
            // compare table
            Phase2: begin
               Process    <= Phase4;
-              for(i=0;i<16;i=i+1) begin
-                 if(ProcessData[31:16] >= HaffumanTable[i])
-                   Place[i] <= 1'b1;
-                 else 
-                   Place[i] <= 1'b0;
-              end
+				if(ProcessData[31:16] >= HaffumanTable[0])	Place[0] <= 1'b1;
+				else												Place[0] <= 1'b0;
+				if(ProcessData[31:16] >= HaffumanTable[1])	Place[1] <= 1'b1;
+				else												Place[1] <= 1'b0;
+				if(ProcessData[31:16] >= HaffumanTable[2])	Place[2] <= 1'b1;
+				else												Place[2] <= 1'b0;
+				if(ProcessData[31:16] >= HaffumanTable[3])	Place[3] <= 1'b1;
+				else												Place[3] <= 1'b0;
+				if(ProcessData[31:16] >= HaffumanTable[4])	Place[4] <= 1'b1;
+				else												Place[4] <= 1'b0;
+				if(ProcessData[31:16] >= HaffumanTable[5])	Place[5] <= 1'b1;
+				else												Place[5] <= 1'b0;
+				if(ProcessData[31:16] >= HaffumanTable[6])	Place[6] <= 1'b1;
+				else												Place[6] <= 1'b0;
+				if(ProcessData[31:16] >= HaffumanTable[7])	Place[7] <= 1'b1;
+				else												Place[7] <= 1'b0;
+				if(ProcessData[31:16] >= HaffumanTable[8])	Place[8] <= 1'b1;
+				else												Place[8] <= 1'b0;
+				if(ProcessData[31:16] >= HaffumanTable[9])	Place[9] <= 1'b1;
+				else												Place[9] <= 1'b0;
+				if(ProcessData[31:16] >= HaffumanTable[10])	Place[10] <= 1'b1;
+				else												Place[10] <= 1'b0;
+				if(ProcessData[31:16] >= HaffumanTable[11])	Place[11] <= 1'b1;
+				else												Place[11] <= 1'b0;
+				if(ProcessData[31:16] >= HaffumanTable[12])	Place[12] <= 1'b1;
+				else												Place[12] <= 1'b0;
+				if(ProcessData[31:16] >= HaffumanTable[13])	Place[13] <= 1'b1;
+				else												Place[13] <= 1'b0;
+				if(ProcessData[31:16] >= HaffumanTable[14])	Place[14] <= 1'b1;
+				else												Place[14] <= 1'b0;
+				if(ProcessData[31:16] >= HaffumanTable[15])	Place[15] <= 1'b1;
+				else												Place[15] <= 1'b0;
            end
            // shift code
            Phase4: begin

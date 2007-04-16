@@ -7,15 +7,14 @@
 // Author      : H.Ishihara
 // E-Mail      : hidemi@sweetcafe.jp
 // HomePage    : http://www.sweetcafe.jp/
-// Date        : 2006/10/01
-// Rev.        : 1.1
+// Date        : 2007/04/11
+// Rev.        : 2.0
 //---------------------------------------------------------------------------
 // Rev. Date       Description
 //---------------------------------------------------------------------------
 // 1.01 2006/10/01 1st Release
 // 1.02 2006/10/04 add ProcessIdle register
-//---------------------------------------------------------------------------
-// $Id: 
+// 2.00 2007/04/11 
 //---------------------------------------------------------------------------
 `timescale 1ps / 1ps
 
@@ -29,7 +28,6 @@ module jpeg_decode
    DataInEnable,
    DataInRead,
 
-   JpegDecodeStart, // 
    JpegDecodeIdle,  // Deocdeer Process Idle(1:Idle, 0:Run)
 
    OutEnable,
@@ -50,7 +48,6 @@ module jpeg_decode
    input          DataInEnable;
    output         DataInRead;
    
-   input          JpegDecodeStart;
    output         JpegDecodeIdle;
    
    output         OutEnable;
@@ -64,7 +61,7 @@ module jpeg_decode
 
    wire [31:0]    JpegData;
    wire           JpegDataEnable;
-   wire           JpegDataEnd;
+   wire			JpegDecodeIdle;
 
    wire           UseBit;
    wire [6:0]     UseWidth;
@@ -73,6 +70,9 @@ module jpeg_decode
    
    wire 	  ImageEnable;
    wire 	  EnableFF00;
+   wire		DecodeFinish;
+
+//   reg 		  ProcessIdle;
 
    //--------------------------------------------------------------------------
    // Read JPEG Data from FIFO
@@ -82,7 +82,6 @@ module jpeg_decode
 			       .clk(clk),
 			       
 			       // Read Data
-			       .DataInStart   ( JpegDecodeStart     ),
 			       .DataIn        ( DataIn              ),
 			       .DataInEnable  ( DataInEnable        ),
 			       .DataInRead    ( DataInRead          ),
@@ -90,10 +89,10 @@ module jpeg_decode
 			       // DataOut
 			       .DataOut       ( JpegData            ),
 			       .DataOutEnable ( JpegDataEnable      ),
-                               .DataOutEnd    ( JpegDataEnd         ),
 			       
                                //
                                .ImageEnable   ( EnableFF00          ),
+ 					.ProcessIdle	( JpegDecodeIdle		),
 			       
 			       // UseData
 			       .UseBit        ( UseBit              ),
@@ -132,12 +131,14 @@ module jpeg_decode
 				     .DataInEnable    ( JpegDataEnable  ),
 				     .DataIn          ( JpegData        ),
 				     
-				     .JpegDecodeStart ( JpegDecodeStart ),
-				     .JpegDecodeIdle  (                 ),
+				     .JpegDecodeIdle  ( JpegDecodeIdle  ),
 				     
 				     .OutWidth        ( OutWidth        ),
 				     .OutHeight       ( OutHeight       ),
 				     .OutBlockWidth   ( JpegBlockWidth  ),
+				     .OutEnable			( OutEnable		),
+				     .OutPixelX			( OutPixelX		),
+				     .OutPixelY			( OutPixelY		),
 				     
 				     //
 				     .DqtEnable       ( DqtEnable       ),
@@ -160,7 +161,7 @@ module jpeg_decode
 				     
 				     //
 				     .ImageEnable     ( ImageEnable     ),
-				     .ImageEnd        ( JpegDataEnd     ),
+				     .ImageEnd        ( DecodeFinish    ),
 				     .EnableFF00      ( EnableFF00      ),
 				     
 				     //
@@ -440,6 +441,9 @@ module jpeg_decode
                          .Data1Out      ( Dct1Data  )
                          );
 
+	wire	ColorEnable;
+	wire [15:0]	ColorPixelX, ColorPixelY;
+	wire [7:0]	ColorR, ColorG, ColorB;
    jpeg_ycbcr u_jpeg_ycbcr(
                            .rst(rst),
                            .clk(clk),
@@ -452,27 +456,19 @@ module jpeg_decode
                            .Data1In          ( Dct1Data  ),
                            .DataInBlockWidth ( JpegBlockWidth ),
                    
-                           .OutEnable    ( OutEnable ),
-                           .OutPixelX    ( OutPixelX ),
-                           .OutPixelY    ( OutPixelY ),
-                           .OutR         ( OutR      ),
-                           .OutG         ( OutG      ),
-                           .OutB         ( OutB      )
+                           .OutEnable    ( ColorEnable ),
+                           .OutPixelX    ( ColorPixelX ),
+                           .OutPixelY    ( ColorPixelY ),
+                           .OutR         ( ColorR      ),
+                           .OutG         ( ColorG      ),
+                           .OutB         ( ColorB      )
                            );
+	// OutData
+	assign OutEnable	= (ImageEnable)?ColorEnable:1'b0;
+	assign OutPixelX	= (ImageEnable)?ColorPixelX:16'd0;
+	assign OutPixelY	= (ImageEnable)?ColorPixelY:16'd0;
+	assign OutR			= (ImageEnable)?ColorR:8'd0;
+	assign OutG			= (ImageEnable)?ColorG:8'd0;
+	assign OutB			= (ImageEnable)?ColorB:8'd0;
 
-   reg 		  ProcessIdle;
-   
-   //
-   always @(posedge clk or negedge rst) begin
-      if(!rst) begin
-	 ProcessIdle <= 1'b1;
-      end else begin
-	 if(JpegDecodeStart == 1'b1) ProcessIdle <= 1'b0;
-	 else if(ProcessIdle <= 1'b0 &
-		 OutWidth == OutPixelX -1 & 
-		 OutHeight == OutPixelY -1) ProcessIdle <= 1'b1;
-      end 
-   end
-   assign JpegDecodeIdle = ProcessIdle;
-   
 endmodule // jpeg_decode
